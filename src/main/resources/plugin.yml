@@ -1,0 +1,6 @@
+name: Smash
+version: '${project.version}'
+main: tech.justcoding.smash.Main
+api-version: 1.17
+authors: [ justCoding ]
+website: justcoding.tech
