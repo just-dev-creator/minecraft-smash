@@ -4,3 +4,12 @@ main: tech.justcoding.smash.Main
 api-version: 1.17
 authors: [ justCoding ]
 website: justcoding.tech
+commands:
+  start:
+    description: Starts the game if timer is over 10
+  changeworld:
+    description: Teleport to spawn location of given world
+  setloc:
+    description: Set spawn location at current position
+  rsgame:
+    description: Resets the game to the lobby default.
