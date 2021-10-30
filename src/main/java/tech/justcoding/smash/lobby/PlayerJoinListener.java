@@ -11,6 +11,9 @@ public class PlayerJoinListener implements Listener {
     public void onJoin(PlayerJoinEvent event) {
         if (GameStateManager.gameState == GameStateManager.GameState.LOBBY) {
             event.getPlayer().teleport(Bukkit.getWorld("lobby").getSpawnLocation());
+            if (Bukkit.getOnlinePlayers().size() >= StartTimer.neededPlayers) {
+                StartTimer.startTimer(60);
+            }
         }
     }
 }
