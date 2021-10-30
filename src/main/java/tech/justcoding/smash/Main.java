@@ -2,8 +2,10 @@ package tech.justcoding.smash;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import tech.justcoding.smash.game.GameStateManager;
+import tech.justcoding.smash.lobby.PlayerJoinListener;
 
 public final class Main extends JavaPlugin {
 
@@ -16,6 +18,16 @@ public final class Main extends JavaPlugin {
             Bukkit.getPluginManager().disablePlugin(this);
         }
         GameStateManager.gameState = GameStateManager.GameState.LOBBY;
+        registerListeners();
+        registerCommands();
+    }
+
+    private void registerListeners() {
+        PluginManager pluginManager = Bukkit.getPluginManager();
+        pluginManager.registerEvents(new PlayerJoinListener(), this);
+    }
+
+    private void registerCommands() {
     }
 
     @Override
@@ -36,13 +48,13 @@ public final class Main extends JavaPlugin {
     }
 
     public static String getPrefix() {
-        return ChatColor.DARK_GRAY.toString() + "┃ " + ChatColor.BLUE + "Game" + ChatColor.DARK_GRAY + " » " + ChatColor.GRAY;
+        return ChatColor.DARK_GRAY + "┃ " + ChatColor.BLUE + "Game" + ChatColor.DARK_GRAY + " » " + ChatColor.GRAY;
     }
     public static String getPrefix(String customPrefix) {
-        return ChatColor.DARK_GRAY.toString() + "┃ " + ChatColor.BLUE + customPrefix + ChatColor.DARK_GRAY + " » " + ChatColor.GRAY;
+        return ChatColor.DARK_GRAY + "┃ " + ChatColor.BLUE + customPrefix + ChatColor.DARK_GRAY + " » " + ChatColor.GRAY;
     }
     public static String getErrorPrefix() {
-        return ChatColor.DARK_GRAY.toString() + "┃ " + ChatColor.DARK_RED + "ERROR" + ChatColor.DARK_GRAY + " » " + ChatColor.GRAY;
+        return ChatColor.DARK_GRAY + "┃ " + ChatColor.DARK_RED + "ERROR" + ChatColor.DARK_GRAY + " » " + ChatColor.GRAY;
     }
     public static String getNoPermission() {
         return getErrorPrefix() + "Du hast nicht die benötigten Berechtigungen für den Befehl. ";
