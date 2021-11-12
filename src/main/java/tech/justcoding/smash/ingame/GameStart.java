@@ -8,10 +8,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.scoreboard.DisplaySlot;
-import org.bukkit.scoreboard.Objective;
-import org.bukkit.scoreboard.Scoreboard;
-import org.bukkit.scoreboard.Team;
 import tech.justcoding.smash.Main;
 import tech.justcoding.smash.game.GameStateManager;
 import tech.justcoding.smash.utils.Config;
@@ -56,21 +52,6 @@ public class GameStart implements Listener {
                 } else {
                     for (Player player : Bukkit.getOnlinePlayers()) {
                         Knockback.playerPercentages.put(player, 0);
-                        Player target = player;
-                        if (target.getScoreboard() == null) {
-                            Scoreboard scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
-                            Objective a = scoreboard.registerNewObjective("test", "dummy", "test");
-                            a.setDisplaySlot(DisplaySlot.SIDEBAR);
-                            a.getScore("Clan").setScore(1);
-                            a.getScore("Plugin By Falcon_Seeker").setScore(2);
-                            a.getScore("Hope you enjoy!").setScore(3);
-                        }
-                        Scoreboard targetScoreBoard = target.getScoreboard();
-                        if (targetScoreBoard.getTeam(target.getName()) == null) {
-                            targetScoreBoard.registerNewTeam(target.getName());
-                        }
-                        Team team = targetScoreBoard.getTeam(target.getName());
-                        team.setPrefix("Hallo");
                     }
                     cancel();
                 }
