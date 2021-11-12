@@ -41,9 +41,7 @@ public class GameStart implements Listener {
             public void run() {
                 if (timer >= 1) {
                     timer--;
-                    if (timer == 0) {
-
-                    } else {
+                     if (timer != 0) {
                         for (Player player : Bukkit.getOnlinePlayers()) {
                             player.sendTitle(ChatColor.BLUE + String.valueOf(timer),
                                     null, 0, 20, 0);
